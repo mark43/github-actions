@@ -1,0 +1,27 @@
+{
+  "name": "collect-issues",
+  "version": "0.1.0",
+  "description": "A github action to collect issues based on filters",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark43/github-actions.git"
+  },
+  "author": "Johannes Lumpe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mark43/github-actions/issues"
+  },
+  "homepage": "https://github.com/mark43/github-actions#readme",
+  "dependencies": {
+    "@actions/core": "1.2.0",
+    "@actions/github": "1.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  }
+}
