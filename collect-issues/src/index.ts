@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import { GitHub, context } from '@actions/github';
-import Octokit = require('@octokit/rest');
+import Octokit from '@octokit/rest';
 import { toArray } from './utils/to-array';
 import { createRegexpFromStrings } from './utils/create-regexp-from-strings';
 
