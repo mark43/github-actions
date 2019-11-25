@@ -1,6 +1,6 @@
 name: 'collect issues'
 author: 'Johannes Lumpe'
-description: 'Collects issue ids from issues which match patterns and writes the result to an output file'
+description: 'Collects issue numbers from issues which match patterns and writes the result to an output file'
 inputs:
   title-filter:
     description: 'Filter to be used when matching issue titles, can be a string or a serialized array of patterns'
@@ -14,10 +14,10 @@ inputs:
   env-output-variable:
       description: 'Environment variable name wich will be used to store serialized action results for further processing'
       required: true
-      default: 'COLLECTED_ISSUE_IDS'
+      default: 'COLLECTED_ISSUE_NUMBERS'
 outputs:
-  issueids:
-    description: 'Serialized array of found issue ids'
+  issue_numbers:
+    description: 'Serialized array of found issue numbers'
 runs:
   using: 'node12'
   main: 'lib/index.js'
