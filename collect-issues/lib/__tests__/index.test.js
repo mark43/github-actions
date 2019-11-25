@@ -59,8 +59,8 @@ describe('collect-issues', () => {
         await index_1.run();
         nockDone();
         const output = getCleanedMockStdout();
-        expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754817,526754715,526216278]`);
-        expect(output).toContain('::set-output name=issueids,::[526754817,526754715,526216278]');
+        expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`);
+        expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
     });
     describe('filtering', () => {
         describe('labels', () => {
@@ -72,8 +72,8 @@ describe('collect-issues', () => {
                 await index_1.run();
                 nockDone();
                 const output = getCleanedMockStdout();
-                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754715,526216278]`);
-                expect(output).toContain('::set-output name=issueids,::[526754715,526216278]');
+                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[2,1]`);
+                expect(output).toContain('::set-output name=issue_numbers,::[2,1]');
             });
             it('should filter issues by string array', async () => {
                 const { nockDone } = await nock_1.back('issuesFixture.json');
@@ -83,8 +83,8 @@ describe('collect-issues', () => {
                 await index_1.run();
                 nockDone();
                 const output = getCleanedMockStdout();
-                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754817,526754715,526216278]`);
-                expect(output).toContain('::set-output name=issueids,::[526754817,526754715,526216278]');
+                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`);
+                expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
             });
             it('should filter issues by regexp string', async () => {
                 const { nockDone } = await nock_1.back('issuesFixture.json');
@@ -94,8 +94,8 @@ describe('collect-issues', () => {
                 await index_1.run();
                 nockDone();
                 const output = getCleanedMockStdout();
-                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754817,526754715,526216278]`);
-                expect(output).toContain('::set-output name=issueids,::[526754817,526754715,526216278]');
+                expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`);
+                expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
             });
         });
     });
@@ -108,8 +108,8 @@ describe('collect-issues', () => {
             await index_1.run();
             nockDone();
             const output = getCleanedMockStdout();
-            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754715,526216278]`);
-            expect(output).toContain('::set-output name=issueids,::[526754715,526216278]');
+            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[2,1]`);
+            expect(output).toContain('::set-output name=issue_numbers,::[2,1]');
         });
         it('should filter issues by string array', async () => {
             const { nockDone } = await nock_1.back('issuesFixture.json');
@@ -119,8 +119,8 @@ describe('collect-issues', () => {
             await index_1.run();
             nockDone();
             const output = getCleanedMockStdout();
-            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754817,526754715,526216278]`);
-            expect(output).toContain('::set-output name=issueids,::[526754817,526754715,526216278]');
+            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`);
+            expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
         });
         it('should filter issues by regexp string', async () => {
             const { nockDone } = await nock_1.back('issuesFixture.json');
@@ -130,8 +130,8 @@ describe('collect-issues', () => {
             await index_1.run();
             nockDone();
             const output = getCleanedMockStdout();
-            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526216278]`);
-            expect(output).toContain('::set-output name=issueids,::[526216278]');
+            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[1]`);
+            expect(output).toContain('::set-output name=issue_numbers,::[1]');
         });
     });
     describe('title and label', () => {
@@ -145,8 +145,8 @@ describe('collect-issues', () => {
             await index_1.run();
             nockDone();
             const output = getCleanedMockStdout();
-            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[526754817]`);
-            expect(output).toContain('::set-output name=issueids,::[526754817]');
+            expect(output).toContain(`::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3]`);
+            expect(output).toContain('::set-output name=issue_numbers,::[3]');
         });
     });
 });

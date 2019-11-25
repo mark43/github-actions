@@ -60,14 +60,14 @@ exports.run = async () => {
             titleFilters,
             issues: allIssues.data.items,
         });
-        const issueIds = filteredIssues.map(issue => issue.id);
+        const issueIds = filteredIssues.map(issue => issue.number);
         console.log(`Found ${issueIds.length} issues:`, issueIds);
         // Expose serialized result both as output and as environment variable so other actions can
         // consume it however they see fit.
         console.log('Exporting results...');
         const serializedOutput = JSON.stringify(issueIds);
         core.exportVariable(resultEnvVariable, serializedOutput);
-        core.setOutput('issueids', serializedOutput);
+        core.setOutput('issue_numbers', serializedOutput);
     }
     catch (error) {
         core.setFailed(error.message);
