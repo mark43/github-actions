@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const github_1 = require("@actions/github");
 const create_rfc_attachment_from_issue_1 = require("./utils/create-rfc-attachment-from-issue");
-const has_non_expired_feedback_date_1 = require("./has-non-expired-feedback-date");
+const has_non_expired_feedback_date_1 = require("./utils/has-non-expired-feedback-date");
 /**
  * Gets action input and parses it as json
  * @param param
@@ -36,6 +36,9 @@ exports.run = async () => {
         const rfcIssueNumbers = getParsedInput('issue_numbers');
         console.log({ rfcIssueNumbers });
         const repoToken = core.getInput('repo-token', { required: true });
+        const showAttachments = getParsedInput('show_attachments', {
+            required: true,
+        });
         const github = new github_1.GitHub(repoToken);
         console.log(`Loading data for issues: ${rfcIssueNumbers}`);
         // TODO serialize api requests?
@@ -49,7 +52,7 @@ exports.run = async () => {
             .then(d => d.data)));
         const issueAttachments = allIssueData
             .filter(has_non_expired_feedback_date_1.hasNonExpiredFeedbackDate)
-            .map(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue);
+            .map(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue({ showAttachments }));
         // we do not provide a channel because we want to send to our default channel
         const output = {
             text: `:tada: *Daily RFC digest*\n${getMessageForIssueCount(issueAttachments.length)}`,

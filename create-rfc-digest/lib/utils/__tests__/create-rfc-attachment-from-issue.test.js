@@ -16,7 +16,7 @@ describe('create-rfc-attachment-from-issue', () => {
             },
             body: 'Testing this',
         };
-        expect(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue(issue)).toMatchObject({
+        expect(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue()(issue)).toMatchObject({
             fallback: `Testtitle RFC by test_user: example.com/issue`,
             // eslint-disable-next-line @typescript-eslint/camelcase
             author_name: 'test_user',
@@ -44,7 +44,7 @@ describe('create-rfc-attachment-from-issue', () => {
             },
             body: 'some text with <!--fb_date_start-->11-01-2019<!--fb_date_end-->',
         };
-        expect(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue(issue)).toMatchObject({
+        expect(create_rfc_attachment_from_issue_1.createRfcAttachmentFromIssue({ showAttachments: true })(issue)).toMatchObject({
             fallback: `Testtitle RFC by test_user: example.com/issue`,
             // eslint-disable-next-line @typescript-eslint/camelcase
             author_name: 'test_user',

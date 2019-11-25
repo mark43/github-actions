@@ -9,7 +9,7 @@ const get_feedback_closing_date_1 = require("./get-feedback-closing-date");
  * Creates a RFC slack attachment from a Github issue response
  * @param issue
  */
-exports.createRfcAttachmentFromIssue = (issue) => {
+exports.createRfcAttachmentFromIssue = ({ showAttachments = false, } = {}) => (issue) => {
     const feedbackClosingDate = get_feedback_closing_date_1.getFeedbackClosingDate(issue.body);
     // TODO allow for more custom meta data via tags in description
     const fields = [
@@ -32,7 +32,7 @@ exports.createRfcAttachmentFromIssue = (issue) => {
         title: issue.title,
         // eslint-disable-next-line @typescript-eslint/camelcase
         title_link: issue.html_url,
-        fields,
-        ts: Date.now().toString(),
+        fields: showAttachments ? fields : [],
+        ts: (new Date(issue.created_at).valueOf() / 1000).toString(),
     };
 };
