@@ -37,6 +37,6 @@ export const createRfcAttachmentFromIssue = (
     // eslint-disable-next-line @typescript-eslint/camelcase
     title_link: issue.html_url,
     fields,
-    ts: Date.now().toString(),
+    ts: (new Date(issue.created_at).valueOf() / 1000).toString(),
   };
 };
