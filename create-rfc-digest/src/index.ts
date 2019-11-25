@@ -3,7 +3,7 @@ import { GitHub, context } from '@actions/github';
 import { ChatPostMessageArguments } from '@slack/web-api';
 
 import { createRfcAttachmentFromIssue } from './utils/create-rfc-attachment-from-issue';
-import { hasNonExpiredFeedbackDate } from './has-non-expired-feedback-date';
+import { hasNonExpiredFeedbackDate } from './utils/has-non-expired-feedback-date';
 
 /**
  * Gets action input and parses it as json
