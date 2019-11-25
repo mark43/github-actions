@@ -5,6 +5,9 @@ inputs:
   issue_numbers:
     description: 'JSON array of issue numbers to be included in RFC digest'
     required: true
+  show_attachments:
+    description: 'Flag to enable/disable showing attachments for each digest entry'
+    required: true
 outputs:
   rfc_digest_message_json:
     description: 'RFC digest as JSON string'
