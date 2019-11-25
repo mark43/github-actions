@@ -25,7 +25,7 @@ describe('create-rfc-attachment-from-issue', () => {
     };
 
     expect(
-      createRfcAttachmentFromIssue(
+      createRfcAttachmentFromIssue()(
         (issue as unknown) as Octokit.IssuesGetResponse,
       ),
     ).toMatchObject({
@@ -59,7 +59,7 @@ describe('create-rfc-attachment-from-issue', () => {
     };
 
     expect(
-      createRfcAttachmentFromIssue(
+      createRfcAttachmentFromIssue({ showAttachments: true })(
         (issue as unknown) as Octokit.IssuesGetResponse,
       ),
     ).toMatchObject({

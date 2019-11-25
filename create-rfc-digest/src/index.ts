@@ -35,6 +35,9 @@ export const run = async (): Promise<void> => {
     const rfcIssueNumbers = getParsedInput<number[]>('issue_numbers');
     console.log({ rfcIssueNumbers });
     const repoToken = core.getInput('repo-token', { required: true });
+    const showAttachments = getParsedInput<boolean>('show_attachments', {
+      required: true,
+    });
     const github = new GitHub(repoToken);
 
     console.log(`Loading data for issues: ${rfcIssueNumbers}`);
@@ -54,7 +57,7 @@ export const run = async (): Promise<void> => {
 
     const issueAttachments = allIssueData
       .filter(hasNonExpiredFeedbackDate)
-      .map(createRfcAttachmentFromIssue);
+      .map(createRfcAttachmentFromIssue({ showAttachments }));
 
     // we do not provide a channel because we want to send to our default channel
     const output: Omit<ChatPostMessageArguments, 'channel'> = {

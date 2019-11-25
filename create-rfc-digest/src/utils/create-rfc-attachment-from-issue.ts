@@ -9,7 +9,9 @@ import { getFeedbackClosingDate } from './get-feedback-closing-date';
  * Creates a RFC slack attachment from a Github issue response
  * @param issue
  */
-export const createRfcAttachmentFromIssue = (
+export const createRfcAttachmentFromIssue = ({
+  showAttachments = false,
+}: { showAttachments?: boolean } = {}) => (
   issue: Octokit.IssuesGetResponse,
 ): MessageAttachment => {
   const feedbackClosingDate = getFeedbackClosingDate(issue.body);
@@ -36,7 +38,7 @@ export const createRfcAttachmentFromIssue = (
     title: issue.title,
     // eslint-disable-next-line @typescript-eslint/camelcase
     title_link: issue.html_url,
-    fields,
+    fields: showAttachments ? fields : [],
     ts: (new Date(issue.created_at).valueOf() / 1000).toString(),
   };
 };
