@@ -4,6 +4,7 @@ import { ChatPostMessageArguments } from '@slack/web-api';
 
 import { createRfcAttachmentFromIssue } from './utils/create-rfc-attachment-from-issue';
 import { hasNonExpiredFeedbackDate } from './utils/has-non-expired-feedback-date';
+import { Context } from '@actions/github/lib/context';
 
 /**
  * Gets action input and parses it as json
@@ -25,15 +26,20 @@ const getParsedInput = <T>(
   }
 };
 
+function formatRepo(context: Context): string {
+  return `${context.repo.owner}/${context.repo.repo}`;
+}
+
 const getMessageForIssueCount = (count: number): string =>
   !count
-    ? 'There are no open RFCs right now'
-    : `We have ${count} RFC${count > 1 ? 's' : ''} open for feedback`;
+    ? `There are no open RFCs right now in ${formatRepo(context)}`
+    : `We have ${count} RFC${
+        count > 1 ? 's' : ''
+      } open for feedback in ${formatRepo(context)}`;
 
 export const run = async (): Promise<void> => {
   try {
     const rfcIssueNumbers = getParsedInput<number[]>('issue_numbers');
-    console.log({ rfcIssueNumbers });
     const repoToken = core.getInput('repo-token', { required: true });
     const showAttachments = getParsedInput<boolean>('show_attachments', {
       required: true,
