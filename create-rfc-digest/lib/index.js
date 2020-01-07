@@ -28,13 +28,15 @@ const getParsedInput = (param, options = {
         throw new Error(`Failed parsing input for ${param}: ${e.message}`);
     }
 };
+function formatRepo(context) {
+    return `${context.repo.owner}/${context.repo.repo}`;
+}
 const getMessageForIssueCount = (count) => !count
-    ? 'There are no open RFCs right now'
-    : `We have ${count} RFC${count > 1 ? 's' : ''} open for feedback`;
+    ? `There are no RFCs open for feedback right now in ${formatRepo(github_1.context)}`
+    : `We have ${count} RFC${count > 1 ? 's' : ''} open for feedback in ${formatRepo(github_1.context)}`;
 exports.run = async () => {
     try {
         const rfcIssueNumbers = getParsedInput('issue_numbers');
-        console.log({ rfcIssueNumbers });
         const repoToken = core.getInput('repo-token', { required: true });
         const showAttachments = getParsedInput('show_attachments', {
             required: true,
