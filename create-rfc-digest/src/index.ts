@@ -32,7 +32,7 @@ function formatRepo(context: Context): string {
 
 const getMessageForIssueCount = (count: number): string =>
   !count
-    ? `There are no open RFCs right now in ${formatRepo(context)}`
+    ? `There are no RFCs open for feedback right now in ${formatRepo(context)}`
     : `We have ${count} RFC${
         count > 1 ? 's' : ''
       } open for feedback in ${formatRepo(context)}`;
