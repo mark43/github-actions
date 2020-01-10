@@ -1,0 +1,10 @@
+name: 'nudge stale rfc issues'
+author: 'Johannes Lumpe'
+description: 'Nudges authors of stale RFC issues to transition their issue into a valid state'
+inputs:
+  issue_numbers:
+    description: 'JSON array of issue numbers to potentially nudge'
+    required: true
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
