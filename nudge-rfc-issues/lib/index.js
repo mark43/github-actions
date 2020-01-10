@@ -3896,7 +3896,10 @@ exports.run = async () => {
         const github = new github_1.GitHub(repoToken);
         console.log(`Loading data for issues: ${rfcIssueNumbers}`);
         const issues = await getIssuesForRepo_1.getIssuesForRepo(rfcIssueNumbers, github_1.context, github);
-        const staleRfcIssues = issues.filter(issue => check_feedback_date_expiration_1.checkFeedbackDateExpiration(issue).isExpired);
+        const staleRfcIssues = issues.filter(
+        // this will only include issue which have a date set which is in the past.
+        // if no date is being found `isExpired` will be `false`
+        issue => check_feedback_date_expiration_1.checkFeedbackDateExpiration(issue).isExpired);
         console.log(`Posting on issues: ${staleRfcIssues.map(issue => issue.number)}`);
         await post_stale_rfc_reminder_comments_1.postStaleRfcReminderComments(staleRfcIssues, github_1.context, github);
     }
