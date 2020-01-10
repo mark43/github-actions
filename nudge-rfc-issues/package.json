@@ -1,0 +1,57 @@
+{
+  "name": "nudge-rfc-issues",
+  "version": "0.1.0",
+  "description": "A github action to node stale, open rfc issues",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf ./lib && ncc build src/index.ts -o ./lib",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "type-check": "tsc --noEmit -p .",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format",
+      "pre-push": "npm run type-check && npm test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark43/github-actions.git"
+  },
+  "author": "Johannes Lumpe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mark43/github-actions/issues"
+  },
+  "homepage": "https://github.com/mark43/github-actions#readme",
+  "dependencies": {
+    "@actions/core": "1.2.0",
+    "@actions/github": "1.1.0",
+    "date-fns": "2.8.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/std-mocks": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "@zeit/ncc": "^0.21.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "jest-circus": "^24.9.0",
+    "jest-date-mock": "^1.0.7",
+    "nock": "^11.7.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "std-mocks": "^1.0.1",
+    "strip-ansi": "^6.0.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  }
+}
