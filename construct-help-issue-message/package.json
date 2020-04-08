@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/mark43/github-actions/issues"
   },
-  "homepage": "https://github.com/mark43/github-actions#readme"
+  "homepage": "https://github.com/mark43/github-actions#readme",
+  "dependencies": {
+    "@actions/core": "1.2.0",
+    "@actions/github": "1.1.0"
+  }
 }
