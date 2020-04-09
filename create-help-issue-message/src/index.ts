@@ -38,10 +38,10 @@ export async function run(): Promise<void> {
       if (context.eventName === 'issues') {
         switch (context.action) {
           case 'opened':
-            messageText = `${issue.url} opened`;
+            messageText = `${issue.html_url} opened`;
             break;
           case 'closed':
-            messageText = `${issue.url} closed`;
+            messageText = `${issue.html_url} closed`;
             break;
         }
       } else if (context.eventName === 'issue_comment') {
