@@ -7,29 +7,34 @@ import { GitHub, context } from '@actions/github';
  * @param options
  */
 const getParsedInput = <T>(
-  param: string,
-  options: core.InputOptions = {
-    required: true,
-  },
+    param: string,
+    options: core.InputOptions = {
+        required: true,
+    },
 ): T => {
-  const input = core.getInput(param, options);
-  try {
-    const parsedInput = JSON.parse(input);
-    return parsedInput as T;
-  } catch (e) {
-    throw new Error(`Failed parsing input for ${param}: ${e.message}`);
-  }
+    const input = core.getInput(param, options);
+    try {
+        const parsedInput = JSON.parse(input);
+        return parsedInput as T;
+    } catch (e) {
+        throw new Error(`Failed parsing input for ${param}: ${e.message}`);
+    }
 };
 
-// init GitHub client
-const repoToken = getParsedInput<string>('repo-token');
-// const github = new GitHub(repoToken);
+export async function run(): Promise<void> {
+    // init GitHub client
+    const repoToken = getParsedInput<string>('repo-token');
+    // const github = new GitHub(repoToken);
 
-const message = {text: context.payload.issue?.html_url}
+    const message = { text: context.payload.issue?.html_url };
 
-if (context.eventName === 'issue') {
-    
-    // find out if issue has label 'help'
-    // construct message
-    core.setOutput('issue_message_json', JSON.stringify(message))
-} 
+    if (context.eventName === 'issue') {
+        // find out if issue has label 'help'
+        // construct message
+        core.setOutput('issue_message_json', JSON.stringify(message));
+    }
+}
+
+if (process.env.NODE_ENV !== 'test') {
+    run();
+}

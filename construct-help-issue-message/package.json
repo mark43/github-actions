@@ -4,7 +4,7 @@
   "description": "A GitHub Action to construct a Slack message for help Issues",
   "main": "lib/index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
