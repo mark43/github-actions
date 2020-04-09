@@ -16,8 +16,8 @@ inputs:
       required: true
       default: 'COLLECTED_ISSUE_NUMBERS'
 outputs:
-  issue_numbers:
-    description: 'Serialized array of found issue numbers'
+  issue_message_json:
+    description: ''
 runs:
   using: 'node12'
   main: 'lib/index.js'
