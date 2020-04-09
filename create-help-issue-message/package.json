@@ -1,0 +1,29 @@
+{
+  "name": "construct-help-issue-message",
+  "version": "0.1.0",
+  "description": "A GitHub Action to construct a Slack message for help Issues",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf ./lib && tsc -p .",
+    "test": "jest",
+    "postinstall": "patch-package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark43/github-actions.git"
+  },
+  "author": "Jon Beller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mark43/github-actions/issues"
+  },
+  "homepage": "https://github.com/mark43/github-actions#readme",
+  "dependencies": {
+    "@actions/core": "1.2.0",
+    "@actions/github": "^2.1.1"
+  },
+  "devDependencies": {
+    "patch-package": "^6.2.2",
+    "typescript": "^3.8.3"
+  }
+}
