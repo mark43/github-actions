@@ -4,6 +4,7 @@
   "description": "A GitHub Action to construct a Slack message for help Issues",
   "main": "lib/index.js",
   "scripts": {
+    "build": "rm -rf ./lib && tsc -p .",
     "test": "jest"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "dependencies": {
     "@actions/core": "1.2.0",
     "@actions/github": "^2.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }
