@@ -34,7 +34,7 @@ export async function run(): Promise<void> {
     });
     const issue = response.data;
     if (issue.labels.find((label) => label.name === 'help')) {
-      let messageText = '';
+      let messageText;
       if (context.eventName === 'issues') {
         switch (context.action) {
           case 'opened':
@@ -43,13 +43,15 @@ export async function run(): Promise<void> {
           case 'closed':
             messageText = `${issue.url} closed`;
             break;
-          default:
         }
       } else if (context.eventName === 'issue_comment') {
         messageText = context.payload.comment.html_url;
       }
-      const message = { text: messageText };
-      core.setOutput('issue_message_json', JSON.stringify(message));
+
+      if (messageText) {
+        const message = { text: messageText };
+        core.setOutput('issue_message_json', JSON.stringify(message));
+      }
     }
   }
 }
