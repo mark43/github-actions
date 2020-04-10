@@ -23,7 +23,12 @@
     "@actions/github": "^2.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/std-mocks": "^1.0.0",
     "patch-package": "^6.2.2",
+    "std-mocks": "^1.0.1",
+    "strip-ansi": "^6.0.0",
+    "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
   }
 }
