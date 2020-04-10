@@ -27,12 +27,21 @@ export async function run(): Promise<void> {
   const issueNumber = context.payload.issue?.number;
 
   if (issueNumber) {
+    console.log(
+      `Handling '${context.eventName}' event with '${context.action}' action on issue #${issueNumber}`,
+    );
     const response = await github.issues.get({
       issue_number: issueNumber,
       owner: context.repo.owner,
       repo: context.repo.repo,
     });
     const issue = response.data;
+
+    console.log(`Fetched issue #${issueNumber}: "${issue.title}"`);
+    console.log(
+      `Labels: ${issue.labels.map((label) => label.name).join(', ')}`,
+    );
+
     if (issue.labels.find((label) => label.name === 'help')) {
       let messageText;
       if (context.eventName === 'issues') {
@@ -49,10 +58,13 @@ export async function run(): Promise<void> {
       }
 
       if (messageText) {
+        console.log(`Creating message with text "${messageText}"`);
         const message = { text: messageText };
         core.setOutput('issue_message_json', JSON.stringify(message));
       }
     }
+  } else {
+    console.log('No issue in webhook payload, finishing');
   }
 }
 
