@@ -21,19 +21,33 @@ const getParsedInput = <T>(
   }
 };
 
+const LABEL = 'help';
+
 export async function run(): Promise<void> {
   const repoToken = getParsedInput<string>('repo-token');
   const github = new GitHub(repoToken);
-  const issueNumber = context.payload.issue?.number;
+  const issueNumber = context.issue?.number;
+  console.log(context.payload);
+  console.log(context.repo);
+  console.log(
+    `Handling '${context.eventName}' event with '${context.action}' action`,
+  );
 
   if (issueNumber) {
+    console.log(`Issue #: ${issueNumber}`);
     const response = await github.issues.get({
       issue_number: issueNumber,
       owner: context.repo.owner,
       repo: context.repo.repo,
     });
     const issue = response.data;
-    if (issue.labels.find((label) => label.name === 'help')) {
+
+    console.log(`Fetched issue #${issueNumber}: "${issue.title}"`);
+    console.log(
+      `Labels: ${issue.labels.map((label) => label.name).join(', ')}`,
+    );
+
+    if (issue.labels.find((label) => label.name === LABEL)) {
       let messageText;
       if (context.eventName === 'issues') {
         switch (context.action) {
@@ -49,10 +63,20 @@ export async function run(): Promise<void> {
       }
 
       if (messageText) {
+        console.log(`Creating message with text "${messageText}"`);
         const message = { text: messageText };
         core.setOutput('issue_message_json', JSON.stringify(message));
+      } else {
+        console.log('No message text');
+        core.setOutput('issue_message_json', JSON.stringify([]));
       }
+    } else {
+      console.log(`No label matching ${LABEL}`);
+      core.setOutput('issue_message_json', JSON.stringify([]));
     }
+  } else {
+    console.log('No issue in webhook payload');
+    core.setOutput('issue_message_json', JSON.stringify([]));
   }
 }
 
