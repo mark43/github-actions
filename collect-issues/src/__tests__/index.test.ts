@@ -62,9 +62,9 @@ describe('collect-issues', () => {
     nockDone();
     const output = getCleanedMockStdout();
     expect(output).toContain(
-      `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`,
+      `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[3,2,1]`,
     );
-    expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
+    expect(output).toContain('::set-output name=issue_numbers::[3,2,1]');
   });
 
   describe('filtering', () => {
@@ -78,9 +78,9 @@ describe('collect-issues', () => {
         nockDone();
         const output = getCleanedMockStdout();
         expect(output).toContain(
-          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[2,1]`,
+          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[2,1]`,
         );
-        expect(output).toContain('::set-output name=issue_numbers,::[2,1]');
+        expect(output).toContain('::set-output name=issue_numbers::[2,1]');
       });
 
       it('should filter issues by string array', async () => {
@@ -92,9 +92,9 @@ describe('collect-issues', () => {
         nockDone();
         const output = getCleanedMockStdout();
         expect(output).toContain(
-          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`,
+          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[3,2,1]`,
         );
-        expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
+        expect(output).toContain('::set-output name=issue_numbers::[3,2,1]');
       });
 
       it('should filter issues by regexp string', async () => {
@@ -106,9 +106,9 @@ describe('collect-issues', () => {
         nockDone();
         const output = getCleanedMockStdout();
         expect(output).toContain(
-          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`,
+          `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[3,2,1]`,
         );
-        expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
+        expect(output).toContain('::set-output name=issue_numbers::[3,2,1]');
       });
     });
   });
@@ -123,9 +123,9 @@ describe('collect-issues', () => {
       nockDone();
       const output = getCleanedMockStdout();
       expect(output).toContain(
-        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[2,1]`,
+        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[2,1]`,
       );
-      expect(output).toContain('::set-output name=issue_numbers,::[2,1]');
+      expect(output).toContain('::set-output name=issue_numbers::[2,1]');
     });
 
     it('should filter issues by string array', async () => {
@@ -137,9 +137,9 @@ describe('collect-issues', () => {
       nockDone();
       const output = getCleanedMockStdout();
       expect(output).toContain(
-        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3,2,1]`,
+        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[3,2,1]`,
       );
-      expect(output).toContain('::set-output name=issue_numbers,::[3,2,1]');
+      expect(output).toContain('::set-output name=issue_numbers::[3,2,1]');
     });
 
     it('should filter issues by regexp string', async () => {
@@ -151,9 +151,9 @@ describe('collect-issues', () => {
       nockDone();
       const output = getCleanedMockStdout();
       expect(output).toContain(
-        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[1]`,
+        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[1]`,
       );
-      expect(output).toContain('::set-output name=issue_numbers,::[1]');
+      expect(output).toContain('::set-output name=issue_numbers::[1]');
     });
   });
 
@@ -169,9 +169,9 @@ describe('collect-issues', () => {
       nockDone();
       const output = getCleanedMockStdout();
       expect(output).toContain(
-        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE},::[3]`,
+        `::set-env name=${DEFAULT_ENV_OUTPUT_VARIABLE}::[3]`,
       );
-      expect(output).toContain('::set-output name=issue_numbers,::[3]');
+      expect(output).toContain('::set-output name=issue_numbers::[3]');
     });
   });
 });
