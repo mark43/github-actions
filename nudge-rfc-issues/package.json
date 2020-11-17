@@ -1,10 +1,10 @@
 {
-  "name": "collect-issues",
-  "version": "0.2.0",
-  "description": "A github action to collect issues based on filters",
+  "name": "nudge-rfc-issues",
+  "version": "0.1.0",
+  "description": "A github action to node stale, open rfc issues",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf ./lib && tsc -p .",
+    "build": "rm -rf ./lib && ncc build src/index.ts -o ./lib",
     "test": "jest",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit -p .",
@@ -28,21 +28,23 @@
   },
   "homepage": "https://github.com/mark43/github-actions#readme",
   "dependencies": {
-    "@actions/core": "1.2.6",
+    "@actions/core": "1.2.0",
     "@actions/github": "1.1.0",
-    "@slack/web-api": "^5.6.0"
+    "date-fns": "2.8.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/std-mocks": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
+    "@zeit/ncc": "^0.21.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-circus": "^24.9.0",
+    "jest-date-mock": "^1.0.7",
     "nock": "^11.7.0",
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",

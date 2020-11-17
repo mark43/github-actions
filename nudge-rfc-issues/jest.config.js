@@ -11,6 +11,7 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
   testRunner: 'jest-circus/runner',
+  setupFiles: ['jest-date-mock'],
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },

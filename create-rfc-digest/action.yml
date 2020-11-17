@@ -1,0 +1,16 @@
+name: 'create rfc digest'
+author: 'Johannes Lumpe'
+description: 'Creates an RFC digest based on collected issues which can be posted to slack'
+inputs:
+  issue_numbers:
+    description: 'JSON array of issue numbers to be included in RFC digest'
+    required: true
+  show_attachments:
+    description: 'Flag to enable/disable showing attachments for each digest entry'
+    required: true
+outputs:
+  rfc_digest_message_json:
+    description: 'RFC digest as JSON string'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'

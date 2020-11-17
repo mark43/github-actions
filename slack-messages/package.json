@@ -1,11 +1,11 @@
 {
-  "name": "collect-issues",
-  "version": "0.2.0",
-  "description": "A github action to collect issues based on filters",
+  "name": "slack-messages",
+  "version": "0.1.0",
+  "description": "A github action to send messages to slack",
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -rf ./lib && tsc -p .",
-    "test": "jest",
+    "test": "exit 0",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit -p .",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/mark43/github-actions#readme",
   "dependencies": {
-    "@actions/core": "1.2.6",
+    "@actions/core": "1.2.0",
     "@actions/github": "1.1.0",
-    "@slack/web-api": "^5.6.0"
+    "@slack/web-api": "5.6.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",

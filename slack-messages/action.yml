@@ -1,0 +1,16 @@
+name: 'slack messages'
+author: 'Johannes Lumpe'
+description: 'Send one or more messages to Slack'
+inputs:
+  slack-bot-token:
+    description: 'Your slack bot token'
+    required: true
+  default-conversation-id:
+    description: 'A default conversation to post to, if not specified in the messaging payload'
+    required: true
+  messages:
+    description: 'One or more messages to be sent to Slack, matching `ChatPostMessageArguments`. Can be a message object or an array of objects as JSON string'
+    required: true    
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
