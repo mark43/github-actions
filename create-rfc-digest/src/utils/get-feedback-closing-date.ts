@@ -11,13 +11,27 @@ export const getFeedbackClosingDate = (text: string): Date | undefined => {
   if (!feedbackDate) {
     return undefined;
   }
-  const dateStringMatch = feedbackDate.match(/(\d{2}-\d{2}-\d{4})/);
+  let dateStringMatch = feedbackDate.match(/(\d{2}-\d{2}-\d{4})/);
+  let dateString = undefined;
   // provided string not a valid date string
-  if (!dateStringMatch) {
+  if (dateStringMatch) {
+    dateString = dateStringMatch[1];
+  } else {
+    dateStringMatch = feedbackDate.match(/(\d{4}-\d{2}-\d{2})/);
+    if (dateStringMatch) {
+      //if just YYYY-MM-DD converts GMT to Local and can shift date.
+      dateString = `${dateStringMatch[1]}T00:00:00`;
+    }
+  }
+
+  if (!dateString) {
     return undefined;
   }
   // TODO less naive date formatting
-  const date = new Date(dateStringMatch[1]);
+  const date = new Date(dateString);
+  if (isNaN(date.getFullYear())) {
+    return undefined;
+  }
   date.setHours(0);
   date.setMilliseconds(0);
   date.setSeconds(0);
