@@ -19,7 +19,7 @@ export const getFeedbackClosingDate = (text: string): Date | undefined => {
   } else {
     dateStringMatch = feedbackDate.match(/(\d{4}-\d{2}-\d{2})/);
     if (dateStringMatch) {
-      //if just YYYY-MM-DD converts GMT to Local and can shift date.
+      //Adding 'T00:00:00' to force time be treated as local and not converted from GMT to local.
       dateString = `${dateStringMatch[1]}T00:00:00`;
     }
   }
