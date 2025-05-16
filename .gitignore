@@ -1,0 +1,93 @@
+# IntelliJ
+.idea/**
+!.idea/codeStyles
+!.idea/codeStyles/*
+!.idea/inspectionProfiles
+!.idea/inspectionProfiles/Project_Default.xml
+!.idea/misc.xml
+!.idea/vcs.xml
+!.idea/prettier.xml
+!.idea/externalDependencies.xml
+
+# logs
+*/logs
+*.log
+
+# secret keys
+*.pem
+!dev43-ca.pem
+
+# VIM
+*.swp
+*~
+:w
+:
+
+# ignore sqldumps
+.dbsnapshots
+.npmrc
+!client/.npmrc
+!cad-common/.npmrc
+!cad-client/.npmrc
+!fr-client/.npmrc
+!fr-electron/.npmrc
+!cad-qa/.npmrc
+.cache
+
+# Logback test configs
+**/logback-test.xml
+
+# maven
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.tag
+**/.flattened-pom.xml
+# mvn-profiler
+.profiler/
+
+# ignore swagger generated files
+/cad-swagger/target
+
+# ignore workpasces
+*.code-workspace
+.swagger_codegen_workspace
+
+# ignore testing / local logback files
+**/logback-test.xml
+
+# ignore target dir
+target/
+
+.editorconfig
+out/
+
+cad-swagger/dependencies.tree
+
+# docker_copyTag.sh artfacts
+**/docker_copyTag.*.json
+
+.java-version
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# files needed by CI that are supported as copies or symlinks in root for local dev
+/.env
+/docker-compose.aarch64.yml
+/docker-compose.dev43.yml
+/docker-compose.groups.yml
+/docker-compose.local.yml
+/docker-compose.migration.yml
+/docker-compose.yml
+
+# node
+node_modules
+
+# properties
+local.properties
+server.properties
+
+**/.DS_Store
