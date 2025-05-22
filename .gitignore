@@ -1,0 +1,25 @@
+# IntelliJ
+.idea/**
+
+### VisualStudioCode ###
+.vscode/**/*
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
+
+# VIM
+*.swp
+*~
+:w
+:
+
+# secret keys
+*.pem
+!dev43-ca.pem
+
+# node
+.npmrc
+node_modules
+
+**/.DS_Store
